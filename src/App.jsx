@@ -51,9 +51,14 @@ function News() {
         {data.map(eachPost => (
             <div className="news-post" key={eachPost?.name}>
               <h1>{eachPost?.name}</h1>
-              <p className='post-time'><span>{eachPost?.provider[0]?.name} | </span><span>{moment(eachPost?.datePublished).format('Do MMMM YYYY, h:mm a')}</span></p>
+              <p className='post-time'><span>{eachPost?.provider[0]?.name}</span><span className='separate'> | </span><span>{moment(eachPost?.datePublished).format('Do MMMM YYYY, h:mm a')}</span></p>
               <p>{eachPost?.description}</p>
-              <img src={eachPost?.image?.thumbnail?.contentUrl} alt="img" className='post-img'/>
+              <img src={eachPost?.image?.thumbnail?.contentUrl
+                .replace("&pid=News", "")
+                .replace("pid=News&", "")
+                .replace("pid=News", "")} 
+                alt="img" className='post-img'/>
+                <a target="_blank" href={eachPost?.url}><span>See Article</span></a>
             </div>
           )
         )}
