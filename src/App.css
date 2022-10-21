@@ -67,12 +67,21 @@
   flex-direction: column;
   /* justify-content: center; */
   align-items: center;
-  border: 1px solid black;
+  border: 3px solid rgba(0, 0, 0, 0.743);
   width: 400px;
   margin: 15px 0px;
   padding: 0px 3px;
+  box-shadow: 1px 5px 15px black;
+  border-radius: 8px
 }
 .news-post > h1{
   font-size: 1.5em;
   text-align: center;
+}
+.post-img{
+  height: 180px;
+  width: 100%;
+}
+.news-post > a{
+  margin: 5px 0px;
 }
