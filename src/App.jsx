@@ -2,9 +2,8 @@ import './App.css';
 import axios from 'axios'
 import moment from 'moment'
 import { useState } from 'react';
-// const axios = require("axios").default;
-
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons';
 
 function News() {
   const [data, setData] = useState([]);
@@ -35,8 +34,8 @@ function News() {
 
   return (
     <div className='container'>
-      <h1 className="news-head">News</h1>
-      <div className="form-input">
+      <div className="header">
+      <span className="news-head">News</span>
       <div className="form-box">
       <form onSubmit={getNews} >
         <input type="text" className='search-inp' placeholder="search for topics, locations and sources" 
@@ -44,7 +43,7 @@ function News() {
           setSearch(e.target.value)
         }}
         />
-        <button type="submit">get</button>
+        <button type="submit"><FontAwesomeIcon title='search'icon={faMagnifyingGlass} /></button>
       </form>
       </div>
       </div>
