@@ -1,7 +1,7 @@
 import './App.css';
 import axios from 'axios'
 import moment from 'moment'
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons';
 
@@ -9,6 +9,29 @@ function News() {
   const [data, setData] = useState([]);
   const [search, setSearch] = useState("");
 
+  useEffect(() => {
+    const trending = () => {
+      const options = {
+        method: 'GET',
+        url: 'https://bing-news-search1.p.rapidapi.com/news',
+        params: {safeSearch: 'Off', textFormat: 'Raw'},
+        headers: {
+          'X-BingApis-SDK': 'true',
+          'X-RapidAPI-Key': '927458ade3msh6163248bdffe610p1b88d0jsnecf53af81a5f',
+          'X-RapidAPI-Host': 'bing-news-search1.p.rapidapi.com'
+        }
+      };
+      
+      axios.request(options).then(function (response) {
+        setData(response.data.value);
+      }).catch(function (error) {
+        console.error(error);
+      });
+
+      
+    }
+  trending();
+  },[])
   const getNews = (e) => {
     e.preventDefault(); 
 
